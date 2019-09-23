@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load ChoiceSubsystem_extras %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for day in day_list %}
+    {{ day }}
+        {% with city_row=cities|foo:day %}
+        {% for city in city_row %}
+            {{ city }}
+        {% endfor %}
+    {% endwith %}
+
+{% endfor %}
+
+</body>
+</html>

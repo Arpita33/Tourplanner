@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .vl {
+  border-left: 3px solid grey;
+  height: 1000px;
+  position: absolute;
+  left: 25%;
+  margin-left: -3px;
+  top: 50px;
+}
+        .profilepic {
+  border-radius: 100%;
+}
+        .face {
+border-radius: 100%;}
+
+ .circleborder {
+border: 5px solid #ff675b;
+border-radius: 100%;
+display: inline-block;
+
+  }
+        article {
+  float: right;
+  position: absolute;
+  top: 100px;
+  left:350px;
+  padding: 10px;
+  width: 85%;
+  //background-color: #f1f1f1;
+  /* only for demonstration, should be removed */
+}
+        .span4 img {
+    margin-right: 20px;
+}
+.span4 .img-left {
+    float: left;
+}
+.span4 .img-right {
+    float: right;
+}
+    </style>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      {% block head %}
+      {% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'home' %}">TourPlanner</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'profile' %}">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage Profile<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+          <li><a href="{% url 'change_password' %}">Change Password</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Posts<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'personalBlogposts' %}">Earlier Posts</a></li>
+          <li><a href="{% url 'createPost' %}">Create New Post</a></li>
+        </ul>
+      </li>
+
+      <li><a href="{% url 'existing_groups' %}">Groups</a></li>
+      <li><a href="{% url 'previous_plans' %}">Previous Plans</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% block body %}
+{% endblock %}
+
+
+  {% block js %}
+  {% endblock %}
+
+
+</body>
+</html>

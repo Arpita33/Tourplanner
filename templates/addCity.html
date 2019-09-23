@@ -1,0 +1,46 @@
+	{% extends 'admin_sidebar.html' %}
+	{% block body %}
+	<div class="row">
+
+	    <div class="col-md-8 col-md-offset-2">
+
+    		<h1><b>Add City</b></h1>
+
+    		<form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+    		    <div class="form-group">
+    		        <label for="title">City Name <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="name" >
+    		    </div>
+				<div class="form-group">
+    		        <label for="lattitude">Lattitude <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="lattitude" >
+    		    </div>
+				<div class="form-group">
+    		        <label for="longitude">Longitude <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="longitude" >
+    		    </div>
+    		    <div class="form-group">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+
+    		    </div>
+    		    <!--div class="form-group">
+    		        <label for="image">Add Image</label>
+                     <input type="file" class="btn-outline-info" name="myFile" value=""><br><br>
+    		    </div-->
+
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-lg btn-danger">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default btn-lg">
+    		            Cancel
+    		        </button>
+    		    </div>
+
+    		</form>
+		</div>
+
+	</div>
+	{% endblock %}

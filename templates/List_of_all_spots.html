@@ -1,0 +1,35 @@
+{% extends 'admin_sidebar.html' %}
+{% load ChoiceSubsystem_extras %}
+{% block body %}
+<h1>Spot List</h1>
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Lattitude</th>
+        <th scope="col">Longitude</th>
+        <th scope="col">Description</th>
+        <th scope="col">Opening Time</th>
+        <th scope="col">Closing Time</th>
+        <th scope="col">Total Visiting Time</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for key,value in name.items %}
+      <tr>
+        <th scope="row">{{ key }}</th>
+        <td>{{ value }}</td>
+        <td>{{ latitude|foo:key }}</td>
+        <td>{{ longitude|foo:key }}</td>
+        <td>{{ desc|foo:key }}</td>
+        <td>{{ open_times|foo:key }}</td>
+        <td>{{ close_times|foo:key }}</td>
+        <td>{{ visit_times|foo:key }}</td>
+        <td><img src="/media/{{ image|foo:key }}" height="80" width="60"></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}

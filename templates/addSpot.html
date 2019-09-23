@@ -1,0 +1,221 @@
+{% extends 'admin_sidebar.html' %}
+{% block head %}
+	<style>
+	* {
+	  outline: 0;
+	  font-family: sans-serif
+	}
+	body {
+	  background-color: #fafafa
+	}
+	span.msg,
+	span.choose {
+	  color: #555;
+	  padding: 5px 0 10px;
+	  display: inherit
+	}
+	.container {
+	  width: 500px;
+	  margin: 50px auto 0;
+	  text-align: center
+	}
+
+	/*Styling Selectbox*/
+	.dropdown {
+	  width: 300px;
+	  display: inline-block;
+	  background-color: #fff;
+	  border-radius: 5px;
+	  box-shadow: 0 0 2px rgb(204, 204, 204);
+	  transition: all .5s ease;
+	  position: relative;
+	  font-size: 14px;
+	  color: #474747;
+	  height: 100%;
+	  text-align: left
+	}
+	.dropdown .select {
+		cursor: pointer;
+		display: block;
+		padding: 10px
+	}
+	.dropdown .select > i {
+		font-size: 13px;
+		color: #888;
+		cursor: pointer;
+		transition: all .3s ease-in-out;
+		float: right;
+		line-height: 20px
+	}
+	.dropdown:hover {
+		box-shadow: 0 0 4px rgb(204, 204, 204)
+	}
+	.dropdown:active {
+		background-color: #f8f8f8
+	}
+	.dropdown.active:hover,
+	.dropdown.active {
+		box-shadow: 0 0 4px rgb(204, 204, 204);
+		border-radius: 5px 5px 0 0;
+		background-color: #f8f8f8
+	}
+	.dropdown.active .select > i {
+		transform: rotate(-90deg)
+	}
+	.dropdown .dropdown-menu {
+		position: absolute;
+		background-color: #fff;
+		width: 100%;
+		left: 0;
+		margin-top: 1px;
+		box-shadow: 0 1px 2px rgb(204, 204, 204);
+		border-radius: 0 1px 5px 5px;
+		overflow: hidden;
+		display: none;
+		max-height: 144px;
+		overflow-y: auto;
+		z-index: 9
+	}
+	.dropdown .dropdown-menu li {
+		padding: 10px;
+		transition: all .2s ease-in-out;
+		cursor: pointer
+	} 
+	.dropdown .dropdown-menu {
+		padding: 0;
+		list-style: none
+	}
+	.dropdown .dropdown-menu li:hover {
+		background-color: #f2f2f2
+	}
+	.dropdown .dropdown-menu li:active {
+		background-color: #e2e2e2
+	}
+	</style>
+	{% endblock %}
+	
+	
+	{% block body %}
+	<div class="row">
+
+	    <div class="col-md-8 col-md-offset-2">
+
+    		<h1><b>Add Spot</b></h1>
+
+    		<form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+    		    <div class="form-group">
+    		        <label for="title">Spot Name <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="name" >
+    		    </div>
+				<div class="form-group">
+    		        <label for="lattitude">Lattitude <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="lattitude" >
+    		    </div>
+				<div class="form-group">
+    		        <label for="longitude">Longitude <span class="require">*</span></label>
+    		        <input type="text" class="form-control" name="longitude" >
+    		    </div>
+    		    <div class="form-group">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" name="description" ></textarea>
+
+    		    </div>
+				<div class="form-group">
+    		        <label for="Open_time">Opening Time </label>
+    		        <input type="time" class="form-control" name="open_time" >
+    		    </div>
+				<div class="form-group">
+    		        <label for="CLose_time">Closing Time </label>
+    		        <input type="time" class="form-control" name="close_time" >
+				</div>
+				<div class="form-group">
+    		        <label for="Total_Travelling_Time">Total Travelling Time </label>
+    		        <input type="number" min="0" class="form-control" name="travel_time" >
+    		    </div>
+				<br>
+				<div class="form-group">
+				  <label for="city_link">Link spot to city</label>
+				  <br>
+					  <div class="dropdown">
+						<div class="select">
+						  <span>Choose city</span>
+						  <i class="fa fa-chevron-down"></i>
+						</div>
+						<input type="hidden" name="city">
+						<ul class="dropdown-menu">
+						{% for key,value in cityList.items %}
+						  <li id="{{ key }}">{{ value }}</li>
+						{% endfor %}
+
+						</ul>
+					  </div>
+
+				</div>
+				<br>
+				<div class="form-group">
+				  <label for="preference_link">Link spot to preference</label>
+				  <br>
+					  <div class="dropdown">
+						<div class="select">
+						  <span>Choose preference</span>
+						  <i class="fa fa-chevron-down"></i>
+						</div>
+						<input type="hidden" name="preference">
+						<ul class="dropdown-menu">
+						{% for key,value in preferenceList.items %}
+						  <li id="{{ key }}">{{ value }}</li>
+						{% endfor %}
+						</ul>
+					  </div>
+
+				</div>
+				<br>
+
+
+    		    <!-->div class="form-group">
+    		        <label for="image_file">Add Image</label>
+                     <input type="file" class="btn-outline-info" name="image_file" value=""><br><br>
+    		    </div-->
+
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-lg btn-danger">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default btn-lg">
+    		            Cancel
+    		        </button>
+    		    </div>
+
+    		</form>
+		</div>
+
+	</div>
+	{% endblock %}
+	{% block js %}
+	<script>
+	/*Dropdown Menu*/
+$('.dropdown').click(function () {
+        $(this).attr('tabindex', 1).focus();
+        $(this).toggleClass('active');
+        $(this).find('.dropdown-menu').slideToggle(300);
+    });
+    $('.dropdown').focusout(function () {
+        $(this).removeClass('active');
+        $(this).find('.dropdown-menu').slideUp(300);
+    });
+    $('.dropdown .dropdown-menu li').click(function () {
+        $(this).parents('.dropdown').find('span').text($(this).text());
+        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
+    });
+/*End Dropdown Menu*/
+
+
+$('.dropdown-menu li').click(function () {
+  var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>',
+      msg = '<span class="msg">Hidden input value: ';
+  $('.msg').html(msg + input + '</span>');
+});
+	</script>
+	{% endblock %}
+

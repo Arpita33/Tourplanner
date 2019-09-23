@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends 'profile_base.html' %}
+{% load ChoiceSubsystem_extras %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Existing Groups</title>
+	{% block head %}
+	<style>
+	.group_list{
+	        width:24%;
+            position: absolute;
+            top: 8%;
+            left: 1%;
+	}
+	 .v1{
+	  border-left: 6px solid black;
+	  height: 1000px;
+	  position: absolute;
+	  left: 25%;
+	  margin-left: -3px;
+	  top: 0;
+	}
+	.messages{
+		    width:70%;
+            position: absolute;
+            top: 2%;
+            left: 32%;
+	}
+	.messages .test{
+		top:30%;
+		position:absolute;
+		
+		
+	}
+	.button_style{
+	left=60%;
+	position:absolute;
+	}
+	</style>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+{% endblock %}
+</head>
+
+<body>
+{% block body %}
+<div class="group_list">
+<h1>Existing Groups</h1>
+<hr>
+
+{% for key,value in groups.items %}   
+	<a href="{% url 'show_messages' key %}">{{ value }} --> {{ key }}</a>
+{% endfor %}
+</div>
+
+<div class="v1"></div>
+<div class="button_style">
+<form action="{% url 'create_group' %}" >
+ {% csrf_token %}
+  <button  type="submit" class="btn btn-lg btn-danger">Create New Group</button>
+</form>
+</div>
+{% if show_messages %}
+<div class="messages">
+{% for key,value in message_list.items %}
+{{ user_list|foo:key }}----{{ message_list|foo:key }}<br>
+{% endfor %}
+<form action="" method="post">
+ {% csrf_token %}
+  Message: <input  type="text" name="message" >
+  <button  type="submit" value="Send">Send</button>
+</form>
+
+</div>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>

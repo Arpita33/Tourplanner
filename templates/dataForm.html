@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    <form method ="post" action="{% url 'plan' %}">
+		{%csrf_token%}
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Data Form</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<h3>Start Date</h3>
+			<div class="form-group">
+				<div class="input-group datepicker">
+					<input type="text" class="form-control" name="start_date" readonly>
+					<span class="input-group-addon">
+						<span class="fa fa-calendar"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<h3>End Date</h3>
+			<div class="form-group">
+				<div class="input-group datepicker">
+					<input type="text" class="form-control" name="end_date" readonly>
+					<span class="input-group-addon">
+						<span class="fa fa-calendar"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<h3>Daily Start Time</h3>
+			<div class="form-group">
+				<div class="input-group timepicker">
+					<input type="text" class="form-control" name="start_time" readonly>
+					<span class="input-group-addon">
+						<span class="fa fa-clock-o"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<h3>Daily End Time</h3>
+			<div class="form-group">
+				<div class="input-group timepicker">
+					<input type="text" class="form-control" name="end_time" readonly>
+					<span class="input-group-addon">
+						<span class="fa fa-clock-o"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<h3>Starting Location</h3>
+			<div class="form-group">
+				<div class="">
+					<input type="text" name="start_location" class="form-control" >
+
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<h3>Estimated Budget</h3>
+			<div class="form-group">
+				<div class="">
+					<input type="number" name="budget" class="form-control" min="0" >
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col-xs-12" >
+		<h3></h3>
+			<div class="form-group">
+				<div class="panel-group">
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						  <button class="btn btn-success" data-toggle="collapse" href="#collapse1">Tour Guide List</button>
+					  </h4>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse">
+					  <ul class="list-group">
+						<li class="list-group-item">One</li>
+						<li class="list-group-item">Two</li>
+						<li class="list-group-item">Three</li>
+					  </ul>
+					  <!--div class="panel-footer">Footer</div-->
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" >
+		<h3></h3>
+			<div class="form-group">
+				<div class="panel-group">
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						  <button class="btn btn-success" data-toggle="collapse" href="#collapse2">Hotel List</button>
+					  </h4>
+					</div>
+					<div id="collapse2" class="panel-collapse collapse">
+					  <ul class="list-group">
+						<li class="list-group-item">One</li>
+						<li class="list-group-item">Two</li>
+						<li class="list-group-item">Three</li>
+					  </ul>
+					  <!--div class="panel-footer">Footer</div-->
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+        <input type="submit" class="btn btn-primary btn-lg" value="Generate Tour Plan">
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/locale/nl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+var defaults = {
+	calendarWeeks: true,
+	showClear: true,
+	showClose: true,
+	allowInputToggle: true,
+	useCurrent: false,
+	ignoreReadonly: true,
+	minDate: new Date(),
+	toolbarPlacement: 'top',
+	locale: 'nl',
+	icons: {
+		time: 'fa fa-clock-o',
+		date: 'fa fa-calendar',
+		up: 'fa fa-angle-up',
+		down: 'fa fa-angle-down',
+		previous: 'fa fa-angle-left',
+		next: 'fa fa-angle-right',
+		today: 'fa fa-dot-circle-o',
+		clear: 'fa fa-trash',
+		close: 'fa fa-times'
+	}
+};
+
+$(function() {
+	var optionsDatetime = $.extend({}, defaults, {format:'DD-MM-YYYY HH:mm'});
+	var optionsDate = $.extend({}, defaults, {format:'DD-MM-YYYY'});
+	var optionsTime = $.extend({}, defaults, {format:'HH:mm'});
+
+	$('.datepicker').datetimepicker(optionsDate);
+	$('.timepicker').datetimepicker(optionsTime);
+	$('.datetimepicker').datetimepicker(optionsDatetime);
+});
+</script>
+
+</body>
+</html>

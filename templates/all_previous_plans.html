@@ -1,0 +1,11 @@
+{% extends 'profile_base.html' %}
+{% load ChoiceSubsystem_extras %}
+{% block body %}
+<body>
+    {% for key,value in all_plans.items %}
+    <ol>
+            <a  href="{% url 'show_particular_plan' key %}"><h2>{{ value }}</h2></a>
+     </ol>  
+    {% endfor %}
+</body>
+{% endblock %}

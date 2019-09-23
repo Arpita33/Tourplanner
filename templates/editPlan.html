@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load ChoiceSubsystem_extras %}
+<html>
+  <head>
+      {% block head %}
+    <meta charset="UTF-8">
+    <title>Edit Plan</title>
+  
+<style>
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+.inner
+{
+    display: inline-block;
+}
+</style>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ {% endblock %}
+  </head>
+<body>
+    {% block navStyle %}navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark  {% endblock %}
+{% block body %}
+
+<div class="container-fluid">
+    <div id="outer">
+        <div class="inner"> <h1>Edit Current Plan</h1> </div>
+        
+      </div>
+    
+
+ <form method="POST" action="{% url 'plan' 'editPlan' %}">  
+    {% csrf_token %} 
+<ol>
+  
+  {% for city in cityName_list %}
+  <li>
+  <div class="row" style="background-color: #66ccff">
+  <div class="col-lg-2" style="background-color: #66ccff">{{ city }}</div>
+  <div class="col-lg-4" style="background-color: #66ccff">{{ city_travel_start_dates|foo:city }}</div>
+  <!--div class="col-sm-3" style="background-color: #66ccff"><input type="number" style="background-color: #ffd699" name="changed_city_days[]" min="1" value="{{ city_travel_total_days|foo:city }}" width="20" height="20"></div-->
+  </div>
+  <br>
+  </li>
+ <!-- <li>{{ city }} ---- {{ city_travel_start_dates|foo:city }} ---- <input type="number" name="changed_city_days[]" min="1" value="{{ city_travel_total_days|foo:city }}" width="200" height="20"></li>-->
+
+  {% with city_spot_names=cityName_spotName|foo:city %}
+  {% with city_spot_visit_times=cityName_spotTime|foo:city %}
+  {% with len=city_spot_names|length:10 %}
+  <ul>
+     <!-- {% for c in 0|range:len %}
+          <li> {{city_spot_names|foo:c}} ______  </li>
+          <br>
+      {% endfor %}-->
+      {% for c in 0|range:len %}
+      <li>
+        <div class="row">
+          <div class="col-lg-4 text-right">{{city_spot_names|foo:c}}</div>
+          <div class="col-lg-4"><input type="number" step="0.1"
+              name="{{city_spot_names|foo:c}}" min="0.5" value="{{ city_spot_visit_times|foo:c }}"></div>
+        </div>
+        <br>
+      </li>
+      {% endfor %}
+  </ul>
+  {% endwith %}
+  {% endwith %}
+  {% endwith %}
+  {% endfor %}    
+
+</ol> 
+
+<div id="outer">
+    <div class="inner"><input type="submit" class="btn btn-group-lg btn-success" value="GET NEW PLAN" name="generate_new_plan"></div>
+    
+  </div>
+  <br><br>
+  <br>
+</form>
+
+
+
+
+{% endblock %}
+</body>
+</html>

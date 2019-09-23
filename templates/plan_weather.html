@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load ChoiceSubsystem_extras %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for city in cities %}
+     {% with row_des=description|foo:city %}
+     {% with row_min=minimum|foo:city %}
+     {% with row_max=maximum|foo:city %}
+         1st day:
+        {{ row_des|foo:0 }} {{ row_min|foo:0 }} {{ row_max|foo:0 }}
+         2nd day:
+        {{ row_des|foo:1 }} {{ row_min|foo:1 }} {{ row_max|foo:1 }}
+         3rd day:
+        {{ row_des|foo:2 }} {{ row_min|foo:2 }} {{ row_max|foo:2 }}
+<br/>
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+{% endfor %}
+
+</body>
+</html>

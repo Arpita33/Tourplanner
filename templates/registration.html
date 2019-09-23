@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+{% block navStyle %}navbar navbar-expand-sm bg-dark navbar-dark ftco_navbar  {% endblock %}
+{% block body %}
+<div class="main">
+
+    <section class="signup">
+        <!-- <img src="images/signup-bg.jpg" alt=""> -->
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form">
+                {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {{ form.errors }}
+                    <h2 class="form-title">Create {{ type }} account</h2>
+                    {% for field in userform %}
+                    <div class="form-group">
+                        {% if field.errors %}
+                        <div class="isa_error">
+                            {% if field.errors %}
+                            <ol>
+                                {% for error in field.errors %}
+                                <li>{{ error|escape }}</li>
+                                {% endfor %}
+                            </ol>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% render_field field class="form-input" placeholder=field.label %}
+                        <!-- <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/> -->
+                    </div>
+                    {% endfor %}
+
+
+                    {% for field in profileform %}
+                    <div class="form-group">
+                        {{ field.errors }}
+                        {% render_field field class="form-input" placeholder=field.label %}
+                        <!-- <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/> -->
+                    </div>
+                    {% endfor %}
+
+                    <!--City choice goes in for guide-->
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                    </div>
+
+                </form>
+                <p class="">
+                    Have already an account ? <a href="{% url 'login' "home"%}" class="">Login here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+</body>
+</html>

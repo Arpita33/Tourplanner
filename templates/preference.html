@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load ChoiceSubsystem_extras %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/static/table_style/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/table_style/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/table_style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/table_style/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/table_style/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/table_style/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/table_style/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/table_style/css/main.css">
+<!--===============================================================================================-->
+<style>
+    strong {
+  font-weight: bold;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+</head>
+<body>
+<form action="" method="post">
+        {% csrf_token %}
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+                    {% for key,value in preference_list.items %}
+                    {% if  pref_spotName_list|foo:key %}
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1"></th>
+								<th class="column2">{{ value }}</th>
+								<th class="column3"></th>
+                                <th class="column4"></th>
+
+							</tr>
+						</thead>
+						<tbody>
+                        {% with spots=pref_spotName_list|foo:key %}
+                        {% with images=pref_spotImage_list|foo:key %}
+                        {% with descriptions=pref_spotDescription_list|foo:key %}
+                        {% for key,value in spots.items %}
+
+								<tr>
+									<!--td class="column1">
+                                    <img src=""
+                                    style="width:100px;height:100px;"></td-->
+
+
+
+                                <td class="column1"><img src="/media/{{images|foo:key}}" alt="Pineapple"
+                                        style="width:170px;height:170px;margin-right:15px;"></td>
+                                    <td class="column2"><strong>{{ value }}</strong><br/>
+                                    {{descriptions|foo:key}}</td>
+                                    <td></td>
+                                    <td class="column3">
+                                        <label class="switch">
+                                             <input type="checkbox" name="selected_spot[]" value="{{ key }}">
+                                              <span class="slider round"></span>
+                                            </label>
+                                    </td>
+
+								</tr>
+                            <tr></tr>
+
+                        {% endfor %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+
+
+
+						</tbody>
+					</table>
+                        <br/>
+                        <br/>
+                    {% endif %}
+                {% endfor %}
+
+                <input type="submit" class="btn btn-group-lg btn-dark" value="NEXT">
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+
+<!--===============================================================================================-->
+	<script src="/static/table_style/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/table_style/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/table_style/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/table_style/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/table_style/js/main.js"></script>
+
+</body>
+</html>

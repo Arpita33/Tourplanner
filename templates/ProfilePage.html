@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+{% block navStyle %}navbar navbar-expand-sm bg-dark navbar-dark ftco_navbar  {% endblock %}
+{% block body %}
+<body>
+<h1>{{ user }}</h1>
+<h1>{{ email }}</h1>
+<h1>{{ first_name }}</h1>
+<h1>{{ last_name }}</h1>
+<h1>{{ address }}</h1>
+<h1>{{ phone }}</h1>
+{% endblock %}
+</body>
+</html>
+
+

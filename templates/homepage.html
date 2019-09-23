@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block navStyle %}navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light {% endblock %}
+{% block body %}
+    <section class="home-slider owl-carousel js-fullheight">
+      <div class="slider-item js-fullheight" style="background-image: url(/static/website_template/images/sea.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-4 mt-5">Explore Bangladesh</h1>
+              <p><a href="{% url 'city' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Plan a Tour</a> <a href="{% url 'AllBlogPosts' %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Blog</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image: url(/static/website_template/images/tiger.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-4 mt-5">Get Closer to Nature</h1>
+              <p><a href="{% url 'city' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Plan a Tour</a> <a href="{% url 'AllBlogPosts' %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Blog</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item js-fullheight" style="background-image: url(/static/website_template/images/hills.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-12 col-sm-12 text-center ftco-animate">
+              <h1 class="mb-4 mt-5">Travel to your heart's content</h1>
+              <p><a href="{% url 'city' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Plan a Tour</a> <a href="{% url 'AllBlogPosts' %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Blog</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

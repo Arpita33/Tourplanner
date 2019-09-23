@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .vl {
+  border-left: 3px solid grey;
+  height: 1000px;
+  position: absolute;
+  left: 25%;
+  margin-left: -3px;
+  top: 50px;
+}
+        .profilepic {
+  border-radius: 100%;
+}
+        .face {
+border-radius: 100%;}
+
+ .circleborder {
+border: 5px solid #ff675b;
+border-radius: 100%;
+display: inline-block;
+
+  }
+        article {
+  float: right;
+  position: absolute;
+  top: 100px;
+  left:350px;
+  padding: 10px;
+  width: 85%;
+  //background-color: #f1f1f1;
+  /* only for demonstration, should be removed */
+}
+        .span4 img {
+    margin-right: 20px;
+}
+.span4 .img-left {
+    float: left;
+}
+.span4 .img-right {
+    float: right;
+}
+    </style>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage Profile<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Edit Profile</a></li>
+          <li><a href="#">Change Password</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Posts<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Earlier Posts</a></li>
+          <li><a href="#">Create New Post</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">Messages</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+<div class="sidebar">
+<div class="circleborder"><img class="face" src="ayush.jpg" alt="face" width="130" height="130"></div>
+    <h1 style=""> Name </h1>
+    <h2 style="">Username</h2>
+</div>
+<div class="vl"></div>
+
+    <article>
+     <div class="row">
+		<h2>Posts Made By You</h2>
+	</div>
+
+	<div class="block">
+      <div class="row">
+        <div class="span4">
+          <img class="img-left" src="http://assets.barcroftmedia.com.s3-website-eu-west-1.amazonaws.com/assets/images/recent-images-11.jpg"/>
+          <div class="content-heading"><h3>Experience &nbsp </h3></div>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+     </div>
+     <br/>
+      <div class="row">
+        <div class="span4">
+          <img class="img-right" src="http://www.prelovac.com/vladimir/wp-content/uploads/2008/03/example.jpg"/>
+          <div class="content-heading"><h3>Experience &nbsp </h3></div>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p>Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+     </div>
+    </div>
+    </article>
+</div>
+
+
+
+
+</body>
+</html>

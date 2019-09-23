@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'profile_base.html' %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block head %}
+    <style>
+        .require {
+    color: #666;
+}
+label small {
+    color: #999;
+    font-weight: normal;
+}
+    </style>
+    {% endblock %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    {% block body %}
+<div class="container">
+	<div class="row">
+
+	    <div class="col-md-8 col-md-offset-2">
+
+    		<h1>Create post</h1>
+            {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+    		<form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+    		    <div class="form-group">
+    		        <label for="title">Title <span class="require">*</span></label>
+                    {{ form.blogCaption|add_class:"form-control" }}
+                    {{ form.errors }}
+    		        <!--input type="text" class="form-control" name="title" /-->
+    		    </div>
+
+    		    <div class="form-group">
+    		        <label for="description">Description</label>
+                    {{ form.blogData|add_class:"form-control" }}
+    		        <!--textarea rows="5" class="form-control" name="description" ></textarea-->
+
+    		    </div>
+    		    <div class="form-group">
+    		        <label for="image">Add Image</label>
+                    {{ form.image }}
+                     <!--input type="file" class="btn-outline-info" name="myFile" value=""--><br><br>
+    		    </div>
+
+    		    <div class="form-group">
+    		        <button type="submit" class="btn btn-lg btn-danger">
+    		            Create
+    		        </button>
+    		        <button class="btn btn-default btn-lg">
+    		            Cancel
+    		        </button>
+    		    </div>
+
+    		</form>
+		</div>
+
+	</div>
+</div>
+{% endblock %}
+</body>
+</html>

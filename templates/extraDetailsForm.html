@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Additional Information</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+	<link type="text/css" rel="stylesheet" href="/static/extra_data_form_style/css/bootstrap.min.css" />
+
+	<link type="text/css" rel="stylesheet" href="/static/extra_data_form_style/css/style.css" />
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="form-header">
+							<h1>Additional Information</h1>
+						</div>
+						<form method="post" action="{% url 'plan' 'extra_details' %}">
+                            {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="start_location"placeholder="Country, ZIP, city..." required>
+                                        <span class="form-label">Current Location</span>
+                                    </div>
+
+                                </div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="date" name="start_date" required>
+										<span class="form-label">Start Date</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="date" name="end_date" required>
+										<span class="form-label">End Date</span>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="time" name="start_time" >
+										<span class="form-label">Daily Travel Start Time</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="time" name="end_time">
+										<span class="form-label">Daily Travel End Time</span>
+									</div>
+								</div>
+							</div>
+
+									<!--<div class="form-group">
+										<input class="form-control" type="number" min="0" name="budget">
+										<span class="form-label">Estimated Budget</span>
+									</div>-->
+
+							<div class="form-btn">
+								<button class="submit-btn">Plan Tour</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/static/extra_data_form_style/js/jquery.min.js"></script>
+	<script>
+		$('.form-control').each(function () {
+			floatedLabel($(this));
+		});
+
+		$('.form-control').on('input', function () {
+			floatedLabel($(this));
+		});
+
+		function floatedLabel(input) {
+			var $field = input.closest('.form-group');
+			if (input.val()) {
+				$field.addClass('input-not-empty');
+			} else {
+				$field.removeClass('input-not-empty');
+			}
+		}
+	</script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
